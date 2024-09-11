@@ -5,6 +5,7 @@ public class Race {
     private int distance; 
 
     public Race(Car car1, Car car2, int distance) {
+        //Using this pointer
         this.car1 = car1;
         this.car2 = car2;
         this.distance = distance;

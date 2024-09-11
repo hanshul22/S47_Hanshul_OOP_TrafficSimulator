@@ -5,6 +5,7 @@ public class Car {
     private int fuel;  
 
     public Car(String name, int speed, int fuel) {
+        //Using this pointer
         this.name = name;
         this.speed = speed;
         this.fuel = fuel;
