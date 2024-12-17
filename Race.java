@@ -1,21 +1,24 @@
 public class Race {
 
-    private static int raceCount = 0; // Static variable to track total races conducted
+    // Private data members
+    private static int raceCount = 0; // Static variable to track total races
     private Car car1;
     private Car car2;
     private Car car3;
     private int distance;
 
+    // Constructor
     public Race(Car car1, Car car2, Car car3, int distance) {
         this.car1 = car1;
         this.car2 = car2;
         this.car3 = car3;
         this.distance = distance;
-        raceCount++; // Increment static variable whenever a new race is created
+        raceCount++;
     }
 
+    // Public method to start the race
     public void startRace() {
-        System.out.println("The race has started!");
+        System.out.println("\nThe race has started!");
         car1.displayInfo();
         car2.displayInfo();
         car3.displayInfo();
@@ -40,18 +43,23 @@ public class Race {
             System.out.println(car3.getName() + " is at position: " + car3Position + " km");
         }
 
-        if (car1Position >= distance && car2Position >= distance && car3Position >= distance) {
+        determineWinner(car1Position, car2Position, car3Position);
+    }
+
+    // Private method to determine race winner
+    private void determineWinner(int pos1, int pos2, int pos3) {
+        if (pos1 >= distance && pos2 >= distance && pos3 >= distance) {
             System.out.println("It's a tie!");
-        } else if (car1Position >= distance) {
+        } else if (pos1 >= distance) {
             System.out.println(car1.getName() + " wins the race!");
-        } else if (car2Position >= distance) {
+        } else if (pos2 >= distance) {
             System.out.println(car2.getName() + " wins the race!");
-        } else if (car3Position >= distance) {
+        } else if (pos3 >= distance) {
             System.out.println(car3.getName() + " wins the race!");
         }
     }
 
-    // Static method to display total races conducted
+    // Public static method to display total races
     public static void displayRaceCount() {
         System.out.println("Total Races Conducted: " + raceCount);
     }
