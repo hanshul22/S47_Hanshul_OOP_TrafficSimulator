@@ -11,13 +11,21 @@ public class Main {
         System.out.println("\nAfter creating cars:");
         Car.displayTotalCars(); // Static method call after creating car objects
 
-        // Step 2: Passing cars dynamically to the Race
+        // Step 2: Update car attributes using setters
+        car1.setFuel(12);
+        car2.setTrack("highway");
+
+        System.out.println("\nUpdated Car Details:");
+        car1.displayInfo();
+        car2.displayInfo();
+
+        // Step 3: Passing cars dynamically to the Race
         Race race = new Race(car1, car2, car3, 10);
 
-        // Step 3: Start the race
+        // Step 4: Start the race
         race.startRace();
 
-        // Step 4: Cleanup (not strictly required in Java, but for explanation)
+        // Step 5: Cleanup
         car1 = null;
         car2 = null;
         car3 = null;
