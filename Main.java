@@ -5,13 +5,19 @@ public class Main {
         Car car2 = new Car("Sedan", 100, 8, "city");
         Car car3 = new Car("Truck", 80, 5, "offroad");
 
-        // Step 2: Passing cars dynamically to the Race
-        Race race = new Race(car1, car2, car3, 10);
+        // Step 2: Display total cars created (using static method)
+        Car.displayTotalCars();
 
-        // Step 3: Start the race
-        race.startRace();
+        // Step 3: Passing cars dynamically to the Race
+        Race race1 = new Race(car1, car2, car3, 10);
 
-        // Step 4: Cleanup (not strictly required in Java, but for explanation)
+        // Step 4: Start the race
+        race1.startRace();
+
+        // Step 5: Display total races conducted (using static method)
+        Race.displayRaceCount();
+
+        // Step 6: Cleanup
         car1 = null;
         car2 = null;
         car3 = null;

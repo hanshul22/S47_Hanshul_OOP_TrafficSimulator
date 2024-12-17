@@ -1,16 +1,17 @@
 public class Car {
 
+    private static int totalCars = 0; // Static variable to track total cars created
     private String name;
     private int speed; 
     private int fuel;
-    private String track; // Added track field
+    private String track; 
 
     public Car(String name, int speed, int fuel, String track) {
-        // Using this pointer
         this.name = name;
         this.speed = speed;
         this.fuel = fuel;
         this.track = track;
+        totalCars++; // Increment the static variable whenever a new car is created
     }
 
     public void displayInfo() {
@@ -31,36 +32,40 @@ public class Car {
     }
 
     public int getAdjustedSpeed() {
-        // Adjust speed based on the track and car type
         if (track.equalsIgnoreCase("offroad")) {
             if (name.equalsIgnoreCase("SportsCar")) {
-                return speed - 20;  // SportsCar loses 20 speed on off-road
+                return speed - 20; 
             } else if (name.equalsIgnoreCase("Truck")) {
-                return speed;  // Truck speed remains the same on off-road
+                return speed;  
             } else if (name.equalsIgnoreCase("Sedan")) {
-                return speed - 10;  // Sedan loses 10 speed on off-road
+                return speed - 10;  
             }
         } else if (track.equalsIgnoreCase("city")) {
             if (name.equalsIgnoreCase("SportsCar")) {
-                return speed - 10;  // SportsCar loses 10 speed in the city
+                return speed - 10; 
             } else if (name.equalsIgnoreCase("Truck")) {
-                return speed - 5;  // Truck loses 5 speed in the city
+                return speed - 5; 
             } else if (name.equalsIgnoreCase("Sedan")) {
-                return speed;  // Sedan maintains speed in the city
+                return speed;  
             }
         } else if (track.equalsIgnoreCase("smooth")) {
             if (name.equalsIgnoreCase("SportsCar")) {
-                return speed;  // SportsCar maintains speed on smooth road
+                return speed;  
             } else if (name.equalsIgnoreCase("Truck")) {
-                return speed - 5;  // Truck loses 5 speed on smooth road
+                return speed - 5;  
             } else if (name.equalsIgnoreCase("Sedan")) {
-                return speed - 5;  // Sedan loses 5 speed on smooth road
+                return speed - 5;  
             }
         }
-        return speed;  // Default return if no track matched
+        return speed; 
     }
 
     public String getName() {
         return name;
+    }
+
+    // Static method to display total cars
+    public static void displayTotalCars() {
+        System.out.println("Total Cars Participating in the Race : " + totalCars);
     }
 }

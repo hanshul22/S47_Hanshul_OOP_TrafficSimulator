@@ -1,5 +1,6 @@
 public class Race {
 
+    private static int raceCount = 0; // Static variable to track total races conducted
     private Car car1;
     private Car car2;
     private Car car3;
@@ -10,6 +11,7 @@ public class Race {
         this.car2 = car2;
         this.car3 = car3;
         this.distance = distance;
+        raceCount++; // Increment static variable whenever a new race is created
     }
 
     public void startRace() {
@@ -22,10 +24,9 @@ public class Race {
         int car2Position = 0;
         int car3Position = 0;
 
-        // Racing logic
         while (car1Position < distance && car2Position < distance && car3Position < distance) {
             if (car1.move()) {
-                car1Position += car1.getAdjustedSpeed() / 10;  // Adjust position based on track
+                car1Position += car1.getAdjustedSpeed() / 10;
             }
             if (car2.move()) {
                 car2Position += car2.getAdjustedSpeed() / 10;
@@ -39,7 +40,6 @@ public class Race {
             System.out.println(car3.getName() + " is at position: " + car3Position + " km");
         }
 
-        // Checking race results
         if (car1Position >= distance && car2Position >= distance && car3Position >= distance) {
             System.out.println("It's a tie!");
         } else if (car1Position >= distance) {
@@ -48,8 +48,11 @@ public class Race {
             System.out.println(car2.getName() + " wins the race!");
         } else if (car3Position >= distance) {
             System.out.println(car3.getName() + " wins the race!");
-        } else {
-            System.out.println("Cars did not finish the race due to an accident.");
         }
+    }
+
+    // Static method to display total races conducted
+    public static void displayRaceCount() {
+        System.out.println("Total Races Conducted: " + raceCount);
     }
 }
