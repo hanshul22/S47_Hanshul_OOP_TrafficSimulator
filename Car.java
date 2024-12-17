@@ -1,13 +1,22 @@
 public class Car {
 
-    // Private data members for encapsulation
-    private static int totalCars = 0; // Static variable to track total cars
+    private static int totalCars = 0; // Static variable to track total cars created
     private String name;
     private int speed;
     private int fuel;
     private String track;
 
-    // Constructor
+    // Default Constructor
+    public Car() {
+        this.name = "Unknown";
+        this.speed = 0;
+        this.fuel = 0;
+        this.track = "Unknown";
+        totalCars++; // Increment the static variable whenever a new car is created
+        System.out.println("A car has been created using the default constructor.");
+    }
+
+    // Parameterized Constructor
     public Car(String name, int speed, int fuel, String track) {
         this.name = name;
         this.speed = speed;
@@ -34,11 +43,19 @@ public class Car {
     }
 
     // Mutators (Setters)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSpeed(int speed) {
+        if (speed > 0) {
+            this.speed = speed;
+        }
+    }
+
     public void setFuel(int fuel) {
         if (fuel >= 0) {
             this.fuel = fuel;
-        } else {
-            System.out.println("Fuel cannot be negative!");
         }
     }
 
@@ -46,7 +63,6 @@ public class Car {
         this.track = track;
     }
 
-    // Public method to display car details
     public void displayInfo() {
         System.out.println("Car Name: " + name);
         System.out.println("Speed: " + speed + " km/h");
@@ -54,7 +70,6 @@ public class Car {
         System.out.println("Track Type: " + track);
     }
 
-    // Method to simulate movement
     public boolean move() {
         if (fuel > 0) {
             fuel--;
@@ -65,8 +80,7 @@ public class Car {
         }
     }
 
-    // Protected method for adjusted speed (demonstrating protected access)
-    protected int getAdjustedSpeed() {
+    public int getAdjustedSpeed() {
         if (track.equalsIgnoreCase("offroad")) {
             if (name.equalsIgnoreCase("SportsCar")) {
                 return speed - 20;
@@ -86,7 +100,9 @@ public class Car {
         } else if (track.equalsIgnoreCase("smooth")) {
             if (name.equalsIgnoreCase("SportsCar")) {
                 return speed;
-            } else {
+            } else if (name.equalsIgnoreCase("Truck")) {
+                return speed - 5;
+            } else if (name.equalsIgnoreCase("Sedan")) {
                 return speed - 5;
             }
         }

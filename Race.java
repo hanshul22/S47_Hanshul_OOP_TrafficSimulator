@@ -1,24 +1,57 @@
 public class Race {
 
-    // Private data members
-    private static int raceCount = 0; // Static variable to track total races
+    private static int raceCount = 0; // Static variable to track total races conducted
     private Car car1;
     private Car car2;
     private Car car3;
     private int distance;
 
-    // Constructor
     public Race(Car car1, Car car2, Car car3, int distance) {
         this.car1 = car1;
         this.car2 = car2;
         this.car3 = car3;
         this.distance = distance;
-        raceCount++;
+        raceCount++; // Increment static variable whenever a new race is created
     }
 
-    // Public method to start the race
+    // Accessors (Getters)
+    public int getDistance() {
+        return distance;
+    }
+
+    public Car getCar1() {
+        return car1;
+    }
+
+    public Car getCar2() {
+        return car2;
+    }
+
+    public Car getCar3() {
+        return car3;
+    }
+
+    // Mutators (Setters)
+    public void setDistance(int distance) {
+        if (distance > 0) { // Validation: distance must be positive
+            this.distance = distance;
+        }
+    }
+
+    public void setCar1(Car car1) {
+        this.car1 = car1;
+    }
+
+    public void setCar2(Car car2) {
+        this.car2 = car2;
+    }
+
+    public void setCar3(Car car3) {
+        this.car3 = car3;
+    }
+
     public void startRace() {
-        System.out.println("\nThe race has started!");
+        System.out.println("The race has started!");
         car1.displayInfo();
         car2.displayInfo();
         car3.displayInfo();
@@ -43,23 +76,18 @@ public class Race {
             System.out.println(car3.getName() + " is at position: " + car3Position + " km");
         }
 
-        determineWinner(car1Position, car2Position, car3Position);
-    }
-
-    // Private method to determine race winner
-    private void determineWinner(int pos1, int pos2, int pos3) {
-        if (pos1 >= distance && pos2 >= distance && pos3 >= distance) {
+        if (car1Position >= distance && car2Position >= distance && car3Position >= distance) {
             System.out.println("It's a tie!");
-        } else if (pos1 >= distance) {
+        } else if (car1Position >= distance) {
             System.out.println(car1.getName() + " wins the race!");
-        } else if (pos2 >= distance) {
+        } else if (car2Position >= distance) {
             System.out.println(car2.getName() + " wins the race!");
-        } else if (pos3 >= distance) {
+        } else if (car3Position >= distance) {
             System.out.println(car3.getName() + " wins the race!");
         }
     }
 
-    // Public static method to display total races
+    // Static method to display total races conducted
     public static void displayRaceCount() {
         System.out.println("Total Races Conducted: " + raceCount);
     }

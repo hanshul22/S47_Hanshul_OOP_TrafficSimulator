@@ -1,34 +1,38 @@
 public class Main {
     public static void main(String[] args) {
-        // Step 1: Dynamic Memory Allocation for Car Objects
+        // Before creating cars
         System.out.println("Before creating cars:");
-        Car.displayTotalCars(); // Static method call before creating car objects
+        Car.displayTotalCars();
 
+        // Creating cars using the parameterized constructor
         Car car1 = new Car("SportsCar", 120, 10, "smooth");
         Car car2 = new Car("Sedan", 100, 8, "city");
         Car car3 = new Car("Truck", 80, 5, "offroad");
 
-        System.out.println("\nAfter creating cars:");
-        Car.displayTotalCars(); // Static method call after creating car objects
+        // Creating a car using the default constructor
+        Car car4 = new Car(); // Default constructor is called
+        car4.setName("CompactCar");
+        car4.setSpeed(90);
+        car4.setFuel(7);
+        car4.setTrack("city");
 
-        // Step 2: Update car attributes using setters
-        car1.setFuel(12);
-        car2.setTrack("highway");
-
-        System.out.println("\nUpdated Car Details:");
+        // Display updated information
+        System.out.println("\nCars after creation:");
         car1.displayInfo();
         car2.displayInfo();
+        car3.displayInfo();
+        car4.displayInfo();
 
-        // Step 3: Passing cars dynamically to the Race
-        Race race = new Race(car1, car2, car3, 10);
+        // Display total cars
+        System.out.println("\nTotal Cars Created:");
+        Car.displayTotalCars();
 
-        // Step 4: Start the race
+        // Starting the race
+        System.out.println("\nStarting a race:");
+        Race race = new Race(car1, car2, car4, 10);
         race.startRace();
 
-        // Step 5: Cleanup
-        car1 = null;
-        car2 = null;
-        car3 = null;
-        System.gc();
+        // Display total races
+        Race.displayRaceCount();
     }
 }
